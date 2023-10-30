@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from 'react'
-import { getAllEmployees } from './constants';
+import { getAllEmployees } from '@/hooks/constants';
 
 export const useGetAllEmployees = () => {
     const [tableContentList, setTableContentList] = useState([]);

@@ -1,6 +1,6 @@
 import React, { Dispatch } from 'react'
-import { CheckIcon } from '../Icon/checkIcon'
-import { ErrorIcon } from '../Icon/errorIcon'
+import { CheckIcon } from '@/components/Icon/checkIcon'
+import { ErrorIcon } from '@/components/Icon/errorIcon'
 export const Toast = (
     { setToast, text, isError }: { setToast: Dispatch<boolean>, text: string, isError: boolean }
 ) => {

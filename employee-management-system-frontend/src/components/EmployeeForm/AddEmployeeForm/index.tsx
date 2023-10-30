@@ -1,7 +1,7 @@
 "use client";
 import { BASE_URL } from '@/hooks/constants';
 import { useEmployeeForm } from '@/hooks/useEmployeeForm';
-import Form from '../Form';
+import Form from '@/components/EmployeeForm/Form';
 
 const AddEmployeeForm = () => {
 

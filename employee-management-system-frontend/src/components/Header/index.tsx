@@ -3,8 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { SetStateAction, useEffect, useState } from "react";
-import ThemeToggler from "./ThemeToggler";
-import menuData from "./menuData";
+import ThemeToggler from "@/components/Header/ThemeToggler";
+import menuData from "@/components/Header/menuData";
 
 const Header = () => {
     // Navbar toggle
