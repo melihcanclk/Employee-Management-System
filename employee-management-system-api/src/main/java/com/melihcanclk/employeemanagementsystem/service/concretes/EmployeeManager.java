@@ -3,6 +3,7 @@ package com.melihcanclk.employeemanagementsystem.service.concretes;
 import com.melihcanclk.employeemanagementsystem.entity.Employee;
 import com.melihcanclk.employeemanagementsystem.repository.EmployeeRepository;
 import com.melihcanclk.employeemanagementsystem.service.abstracts.EmployeeService;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -33,7 +34,7 @@ public class EmployeeManager implements EmployeeService {
 
     @Override
     public List<Employee> getAllEmployees() {
-        return employeeRepository.findAll();
+        return employeeRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
     }
 
     @Override
