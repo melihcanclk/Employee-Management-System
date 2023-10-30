@@ -44,7 +44,6 @@ export const useEmployeeForm = ({ baseUrl, method }: { baseUrl: string, method: 
                         message: "Employee updated successfully",
                         error: false
                     });
-                    form.reset();
                     setToast(true);
                 } else if (res && res.status === 400) {
                     setStatus({

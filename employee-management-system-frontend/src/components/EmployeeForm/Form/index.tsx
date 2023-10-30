@@ -1,13 +1,30 @@
 import { Toast } from '@/components/Toast/success'
+import { useGetEmployee } from '@/hooks/useGetEmployee';
 import { FormProps } from '@/types/form'
-import React from 'react'
+import React, { useEffect } from 'react'
 
 const Form = ({
     handleSubmit,
     setToast,
     status,
-    toast
+    toast,
+    id
 }: FormProps) => {
+
+    const { employee } = useGetEmployee({ id: id || '' });
+
+    useEffect(() => {
+        if (employee) {
+            const firstName = document.getElementById('first_name') as HTMLInputElement;
+            const lastName = document.getElementById('last_name') as HTMLInputElement;
+            const email = document.getElementById('email') as HTMLInputElement;
+            console.log({ employee })
+            firstName.value = employee.firstName;
+            lastName.value = employee.lastName;
+            email.value = employee.email;
+        }
+    }, [employee])
+
     return (
         <div className="w-full">
             <form onSubmit={handleSubmit}>

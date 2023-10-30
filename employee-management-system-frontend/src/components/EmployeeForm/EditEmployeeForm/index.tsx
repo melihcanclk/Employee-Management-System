@@ -2,6 +2,7 @@
 import { BASE_URL } from '@/hooks/constants';
 import Form from '../Form';
 import { useEmployeeForm } from '@/hooks/useEmployeeForm';
+import { useGetEmployee } from '@/hooks/useGetEmployee';
 
 const EditEmployeeForm = ({ id }: { id: string }) => {
 
@@ -13,6 +14,7 @@ const EditEmployeeForm = ({ id }: { id: string }) => {
             toast={toast}
             setToast={setToast}
             status={status}
+            id={id}
         />
     )
 }
