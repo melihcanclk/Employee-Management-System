@@ -1,11 +1,15 @@
 "use client";
-import { createEmployee } from '@/hooks/constants';
+import { BASE_URL } from '@/hooks/constants';
 import React, { useState } from 'react'
 import { ToastSuccess } from '../Toast/success';
 
 const AddEmployeeForm = () => {
 
     const [toast, setToast] = useState(false);
+    const [status, setStatus] = useState({
+        message: '',
+        error: false
+    });
 
     const handleSubmit = (
         e: React.FormEvent<HTMLFormElement>
@@ -20,10 +24,48 @@ const AddEmployeeForm = () => {
         const email = (form.elements.namedItem('email') as HTMLInputElement).value;
         // create the employee
 
-        createEmployee({ firstName, lastName, email })
-            .then(() => {
-                setToast(true);
-                form.reset();
+        fetch(BASE_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                firstName,
+                lastName,
+                email
+            })
+        })
+            .then((res: any) => {
+                console.log({ res })
+                if (res && res.status === 201) {
+                    setStatus({
+                        message: "Employee created successfully",
+                        error: false
+                    });
+                    form.reset();
+                    setToast(true);
+                } else if (res && res.status === 409) {
+                    setStatus({
+                        message: "Employee already exists with this email",
+                        error: true
+                    });
+                    setToast(true);
+                } else {
+                    setStatus({
+                        message: "Something went wrong",
+                        error: true
+                    });
+                    setToast(true);
+                    setTimeout(() => {
+                        setToast(false);
+                    }, 3000);
+                }
+            }).catch((err) => {
+                console.log(err);
+                setStatus({
+                    message: "Something went wrong",
+                    error: true
+                });
                 setTimeout(() => {
                     setToast(false);
                 }, 3000);
@@ -63,7 +105,11 @@ const AddEmployeeForm = () => {
             {
                 (
                     toast &&
-                    <ToastSuccess setToast={setToast} />
+                    <ToastSuccess
+                        setToast={setToast}
+                        text={status.message}
+                        isError={status.error}
+                    />
 
 
                 )

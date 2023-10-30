@@ -19,7 +19,11 @@ public class EmployeeManager implements EmployeeService {
 
     @Override
     public Employee save(Employee employee) {
-        return employeeRepository.save(employee);
+        // if same email exists, return null
+        if (employeeRepository.findByEmail(employee.getEmail()).isEmpty()) {
+            return employeeRepository.save(employee);
+        }
+        return null;
     }
 
     @Override

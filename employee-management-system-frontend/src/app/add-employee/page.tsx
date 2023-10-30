@@ -1,5 +1,4 @@
 import AddEmployeeForm from "@/components/AddEmployeeForm";
-import Table from "@/components/Table";
 
 export default function AddEmployee() {
   return (
