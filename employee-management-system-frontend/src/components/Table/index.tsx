@@ -1,6 +1,6 @@
 "use client"
 import { TableContentProps } from '@/types/table'
-import TableHeader from '@/components/Table';
+import TableHeader from '@/components/Table/header';
 import { useGetAllEmployees } from '@/hooks/useGetAllEmployees';
 import { DeleteConfirmModal } from '@/components/Modals/DeleteConfirmModal';
 import { useState } from 'react';
