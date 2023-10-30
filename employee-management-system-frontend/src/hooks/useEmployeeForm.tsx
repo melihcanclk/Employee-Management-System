@@ -1,13 +1,12 @@
 import { useState } from "react";
-import { BASE_URL } from "./constants";
 
-export const useSaveEmployeeForm = () => {
+export const useEmployeeForm = ({ baseUrl, method }: { baseUrl: string, method: string }) => {
     const [toast, setToast] = useState(false);
     const [status, setStatus] = useState({
         message: '',
         error: false
     });
-
+    method
     const handleSubmit = (
         e: React.FormEvent<HTMLFormElement>
     ) => {
@@ -15,14 +14,13 @@ export const useSaveEmployeeForm = () => {
         // get the form data
         const form = e.currentTarget;
 
-
         const firstName = (form.elements.namedItem('first_name') as HTMLInputElement).value;
         const lastName = (form.elements.namedItem('last_name') as HTMLInputElement).value;
         const email = (form.elements.namedItem('email') as HTMLInputElement).value;
         // create the employee
 
-        fetch(BASE_URL, {
-            method: 'POST',
+        fetch(baseUrl, {
+            method: method,
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -33,12 +31,26 @@ export const useSaveEmployeeForm = () => {
             })
         })
             .then((res: any) => {
-                if (res && res.status === 201) {
+                console.log(res)
+                if (res && (res.status === 201)) {
                     setStatus({
                         message: "Employee created successfully",
                         error: false
                     });
                     form.reset();
+                    setToast(true);
+                } else if (res && res.status === 200) {
+                    setStatus({
+                        message: "Employee updated successfully",
+                        error: false
+                    });
+                    form.reset();
+                    setToast(true);
+                } else if (res && res.status === 400) {
+                    setStatus({
+                        message: "Please fill all the fields",
+                        error: true
+                    });
                     setToast(true);
                 } else if (res && res.status === 409) {
                     setStatus({

@@ -1,11 +1,13 @@
-"use client";
-import { ToastSuccess } from '../Toast/success';
-import { useSaveEmployeeForm } from '@/hooks/useSaveEmployeeForm';
+import { Toast } from '@/components/Toast/success'
+import { FormProps } from '@/types/form'
+import React from 'react'
 
-const AddEmployeeForm = () => {
-
-    const { handleSubmit, toast, setToast, status } = useSaveEmployeeForm();
-
+const Form = ({
+    handleSubmit,
+    setToast,
+    status,
+    toast
+}: FormProps) => {
     return (
         <div className="w-full">
             <form onSubmit={handleSubmit}>
@@ -37,14 +39,15 @@ const AddEmployeeForm = () => {
             </form>
             {
                 toast &&
-                <ToastSuccess
+                <Toast
                     setToast={setToast}
                     text={status.message}
                     isError={status.error}
                 />
             }
         </div>
+
     )
 }
 
-export default AddEmployeeForm
+export default Form

@@ -1,3 +1,5 @@
+import EditEmployeeForm from "@/components/EmployeeForm/EditEmployeeForm";
+
 export default function EditEmployee({ params }: { params: { id: string } }) {
     const { id } = params;
 
@@ -6,6 +8,7 @@ export default function EditEmployee({ params }: { params: { id: string } }) {
             <h1 className="pb-4 text-xl">
                 Edit employee {id}
             </h1>
+            <EditEmployeeForm id={id} />
         </main>
     )
 

@@ -1,7 +1,7 @@
 import React, { Dispatch } from 'react'
 import { CheckIcon } from '../Icon/checkIcon'
 import { ErrorIcon } from '../Icon/errorIcon'
-export const ToastSuccess = (
+export const Toast = (
     { setToast, text, isError }: { setToast: Dispatch<boolean>, text: string, isError: boolean }
 ) => {
     return (
