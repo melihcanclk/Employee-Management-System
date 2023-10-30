@@ -45,6 +45,12 @@ export const useEmployeeForm = ({ baseUrl, method }: { baseUrl: string, method: 
                         error: false
                     });
                     setToast(true);
+                } else if (res && res.status === 204) {
+                    setStatus({
+                        message: "Employee deleted successfully",
+                        error: false
+                    });
+                    setToast(true);
                 } else if (res && res.status === 400) {
                     setStatus({
                         message: "Please fill all the fields",
