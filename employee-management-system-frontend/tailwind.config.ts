@@ -6,12 +6,12 @@ const config: Config = {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  darkMode: "class",
   theme: {
     container: {
       center: true,
       padding: "1rem",
     },
-
     screens: {
       xs: "450px",
       // => @media (min-width: 450px) { ... }
