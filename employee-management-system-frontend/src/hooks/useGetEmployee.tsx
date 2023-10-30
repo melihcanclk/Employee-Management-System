@@ -4,11 +4,7 @@ import { BASE_URL } from '@/hooks/constants';
 
 export const useGetEmployee = ({ id }: { id: string }) => {
 
-    const [employee, setEmployee] = useState<Employee>({
-        firstName: '',
-        lastName: '',
-        email: ''
-    });
+    const [employee, setEmployee] = useState<Employee | null>(null);
 
     useEffect(() => {
         if (id && id !== '') {
