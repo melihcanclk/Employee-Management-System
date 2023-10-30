@@ -1,5 +1,3 @@
-import { Employee } from "@/types/employee";
-
 export const BASE_URL = 'http://localhost:8080/api/employees';
 
 export const getAllEmployees = async () => {
