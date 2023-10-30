@@ -19,6 +19,9 @@ const TableHeader = () => {
                 <th scope="col" className="px-6 py-3 text-right">
                     <span>Edit</span>
                 </th>
+                <th scope="col" className="px-6 py-3 text-right">
+                    <span>Delete</span>
+                </th>
             </tr>
         </thead>
     )

@@ -21,6 +21,9 @@ const TableContent = (props: TableContentProps) => {
                 <td className="px-6 py-4 text-right">
                     <a href={`/edit-employee/${id}`} className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                 </td>
+                <td className="px-6 py-4 text-right">
+                    <a href={`/delete-employee/${id}`} className="font-medium text-red-600 dark:text-red-500 hover:underline">Delete</a>
+                </td>
             </tr>
         </tbody>
     )
